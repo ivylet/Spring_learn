@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+<!--查询操作-->
+<mapper namespace="com.taytay.pojo.User">
+    <select id="findById" parameterType="int" resultType="com.taytay.pojo.User">
+        select * from users where uid = #{id}
+    </select>
+    <!--    增加操作-->
+    <insert id="addUser" parameterType="com.taytay.pojo.User">
+        insert into users(uid,uname,uage)values(#{uid},#{uname},#{uage})
+    </insert>
+    <!--    更改操作-->
+    <update id="updateUser" parameterType="com.taytay.pojo.User">
+        update users set uname = #{uname},uage = #{uage} where uid = #{uid}
+    </update>
+    <!--    删除操作-->
+    <delete id="deleteUser" parameterType="Integer">
+        delete from users where uid = #{uid}
+    </delete>
+    <sql id="userColumns">${alias}.uid,${alias}.uname,${alias}.uage</sql>
+</mapper>
